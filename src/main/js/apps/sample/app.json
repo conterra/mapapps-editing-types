@@ -1,0 +1,394 @@
+{
+  "properties": {
+    "title": "Editing Types Sample App",
+    "amdPackages": "apprt@^3.3.0"
+  },
+  "load": {
+    "bundleLocations": [
+      "localbundles",
+      "bundles"
+    ],
+    "allowedBundles": [
+      "map@^3.3.0",
+      "system@^3.3.0",
+      "templatelayout@^3.3.0",
+      "templates@^3.3.0",
+      "themes@^3.3.0",
+      "splashscreen@^3.3.0",
+      "windowmanager@^3.3.0",
+      "dataform@^3.3.0",
+      "toolset@^3.3.0",
+      "toolrules@^3.3.0",
+      "legend@^3.3.0",
+      "infoviewer@^3.3.0",
+      "contentviewer@^3.3.0",
+      "banner@^3.3.0",
+      "notifier@^3.3.0",
+      "basemaptoggler@^3.3.0",
+      "custominfo@^3.3.0",
+      "editing@^3.3.0",
+      "dn_editingtypes"
+    ],
+    "require": [
+      "${app}.app"
+    ],
+    "i18n": [
+      "bundle"
+    ]
+  },
+  "bundles": {
+    "banner": {
+      "BannerWidget": {
+        "label": "Developer Network",
+        "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+        "imagePosition": "above",
+        "link": "http://developernetwork.conterra.de"
+      }
+    },
+    "custominfo": {
+      "CustomInfoToggleTool": [
+        {
+          "widgetSettings": {
+            "content": "${custominfo.content}",
+            "window": {
+              "marginBox": {
+                "w": 300,
+                "h": 100,
+                "l": 25,
+                "b": 70
+              },
+              "draggable": true,
+              "closable": true,
+              "modal": false,
+              "maximizable": false,
+              "resizable": true,
+              "title": "${custominfo.title}"
+            }
+          },
+          "type": "INFO",
+          "toolClass": "ctInfo",
+          "title": "${custominfo.title}",
+          "tooltip": "${custominfo.title}",
+          "iconClass": "icon-custom-info-info",
+          "togglable": true,
+          "id": "customInfoTool",
+          "activateOnStartup": true
+        }
+      ],
+      "enabled": true
+    },
+    "contentviewer": {
+      "ContentRegistration": {
+        "contentRules": [
+          {
+            "info": {
+              "valueNotFoundString": "",
+              "type": "CustomTemplate",
+              "title": "{details}",
+              "showDetailsButton": false,
+              "skipProperties": [],
+              "template": "<h1>Details:</h1><div>{details}<p><font size=\"1\">Erfasst von: {melder}</font></p><hr><h1>Kommentar der Stadtverwaltung:</h1><div>{kommentar}</div></div>"
+            },
+            "detail": {
+              "valueNotFoundString": "",
+              "type": "Grid",
+              "title": "{details}",
+              "skipProperties": []
+            },
+            "windowSize": {
+              "w": 320,
+              "h": 240
+            },
+            "matches": {
+              "context": {
+                "mapModelNodeId": "mapapps_feature/1"
+              }
+            },
+            "title": "Störungen",
+            "type": "Grid"
+          }
+        ]
+      }
+    },
+    "map": {
+      "MapWidgetFactory": {
+        "esriMapOpts": {
+          "slider": false,
+          "nav": false,
+          "logo": true,
+          "sliderStyle": "small",
+          "doubleClickZoom": true,
+          "clickRecenter": true,
+          "pan": true,
+          "rubberBandZoom": true,
+          "keyboardNavigation": true,
+          "scrollWheelZoom": true,
+          "sliderPosition": "bottom-right",
+          "displayGraphicsOnPan": true,
+          "fadeOnZoom": true,
+          "showAttribution": true,
+          "sliderOrientation": "vertical",
+          "sliderLabels": [
+            ""
+          ],
+          "navigationMode": "css-transforms"
+        }
+      },
+      "MapModelFactory": {
+        "_configData": {
+          "maps": [
+            {
+              "id": "default",
+              "glass_pane": [],
+              "operationalLayer": [
+                {
+                  "id": "mapapps_feature",
+                  "service": "mapapps_feature",
+                  "enabled": true,
+                  "options": {
+                    "outFields": [
+                      "*"
+                    ],
+                    "mode": 1,
+                    "editable": true
+                  },
+                  "layers": [
+                    "1"
+                  ]
+                }
+              ],
+              "baseLayer": [
+                {
+                  "id": "background1",
+                  "service": "worldTopo",
+                  "enabled": true
+                },
+                {
+                  "id": "background2",
+                  "service": "grey",
+                  "enabled": false
+                },
+                {
+                  "id": "background3",
+                  "service": "worldImage",
+                  "enabled": false
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "MappingResourceRegistryFactory": {
+        "_knownServices": {
+          "services": [
+            {
+              "id": "mapapps_feature",
+              "title": "Feature Service",
+              "type": "AGS_FEATURE",
+              "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung_admin/FeatureServer",
+              "layers": [
+                {
+                  "title": "Status",
+                  "id": 1
+                }
+              ]
+            },
+            {
+              "id": "grey",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
+              "type": "AGS_TILED",
+              "title": "${service.grey}"
+            },
+            {
+              "id": "worldTopo",
+              "type": "AGS_TILED",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+              "title": "${service.topo}"
+            },
+            {
+              "id": "worldImage",
+              "type": "AGS_TILED",
+              "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+              "title": "${service.aerial}"
+            }
+          ]
+        }
+      },
+      "MapState": {
+        "initialExtent": {
+          "xmax": 867792.4915261895,
+          "ymax": 6802085.106900126,
+          "xmin": 831102.7179493543,
+          "ymin": 6783090.505371286,
+          "wkid": 3857
+        }
+      }
+    },
+    "themes": {
+      "ThemeSelector": {
+        "componentEnabled": false
+      },
+      "ThemeModel": {
+        "_selectedTheme": "everlasting"
+      }
+    },
+    "templates": {
+      "TemplateSelector": {
+        "componentEnabled": false
+      }
+    },
+    "overviewmap": {
+      "OverviewMap": {
+        "serviceDefinition": {
+          "service": "worldTopo",
+          "layers": [
+            "*"
+          ]
+        }
+      }
+    },
+    "omnisearch": {
+      "ZoomHandler": {
+        "scale": 4000
+      }
+    },
+    "coordinateviewer": {
+      "CoordinateViewer": {
+        "degreeFormat": true,
+        "transformSrs": true,
+        "targetSrs": "EPSG:4326",
+        "showCoordinates": true
+      }
+    },
+    "mapflow": {
+      "MapFlow": {
+        "autoZoomTo": true
+      }
+    },
+    "basemaptoggler": {
+      "DropDownBasemapToggler": {
+        "showLabel": true
+      }
+    },
+    "toolset": {
+      "ToolsetManager": {
+        "toolsets": [
+          {
+            "id": "editing_tools",
+            "title": "Störungen",
+            "tools": [
+              "editFeatureTool",
+              "editDefaultCreateFeatureTool"
+            ],
+            "container": "map",
+            "position": {
+              "rel_t": 90,
+              "rel_l": 25
+            }
+          }
+        ]
+      }
+    },
+    "editing": {
+      "CreateFeatureTool": [
+        {
+          "id": "editAdd1",
+          "templateId": "mapapps_feature/0|0",
+          "title": "Ausfall einer Strassenbeleuchtung",
+          "iconClass": "ctToolIcon_editDrawFeatureTool",
+          "rules": {
+            "editingCanCreate": "mapapps_feature/0"
+          }
+        },
+        {
+          "id": "editAdd2",
+          "templateId": "mapapps_feature/0|1",
+          "title": "Defekte Ampel",
+          "iconClass": "ctToolIcon_editDrawFeatureTool",
+          "rules": {
+            "editingCanCreate": "mapapps_feature/0"
+          }
+        },
+        {
+          "id": "editAdd3",
+          "templateId": "mapapps_feature/0|2",
+          "title": "Schaden an Strassenbeschilderung",
+          "iconClass": "ctToolIcon_editDrawFeatureTool",
+          "rules": {
+            "editingCanCreate": "mapapps_feature/0"
+          }
+        },
+        {
+          "id": "editAdd4",
+          "templateId": "mapapps_feature/0|3",
+          "title": "Verunreinigung durch Muell, Sperrgut oder Schrott",
+          "iconClass": "ctToolIcon_editDrawFeatureTool",
+          "rules": {
+            "editingCanCreate": "mapapps_feature/0"
+          }
+        },
+        {
+          "id": "editAdd5",
+          "templateId": "mapapps_feature/0|4",
+          "title": "Schaden an einer Strasse",
+          "iconClass": "ctToolIcon_editDrawFeatureTool",
+          "rules": {
+            "editingCanCreate": "mapapps_feature/0"
+          }
+        }
+      ],
+      "SnappingModel": {
+        "snappingEnabled": false
+      },
+      "DataformControlResolver": {
+        "dataformControlDefinitions": {
+          "mapapps_feature": {
+            "art": [],
+            "objectid": [],
+            "kommentar": [
+              {
+                "type": "textarea",
+                "title": "Kommentar",
+                "size": {
+                  "w": 200,
+                  "h": 90
+                }
+              }
+            ],
+            "details": [
+              {
+                "type": "textarea",
+                "title": "Details",
+                "size": {
+                  "w": 200,
+                  "h": 60
+                }
+              }
+            ],
+            "melder": [
+              {
+                "type": "textbox",
+                "title": "Erfasser"
+              }
+            ],
+            "zeitpunkt": [
+              {
+                "type": "datetextbox",
+                "title": "Datum",
+                "bindingFormat": "unix"
+              },
+              {
+                "type": "timetextbox",
+                "title": "Uhrzeit",
+                "bindingFormat": "unix",
+                "inc": "T00:30:00"
+              }
+            ]
+          }
+        },
+        "customTypeMappings": {},
+        "showLabelsInsteadOfReadOnlyControls": true
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "Bundle-SymbolicName": "dn_editingtypes",
+  "Bundle-Version": "1.0.0-SNAPSHOT",
+  "Bundle-Name": "${bundleName}",
+  "Bundle-Description": "${bundleDescription}",
+  "Bundle-Vendor": "con terra GmbH",
+  "Bundle-Category": [
+    "editing"
+  ],
+  "Require-Bundle": [
+    {
+      "name": "editing",
+      "version": "^3.3.0"
+    }
+  ],
+  "Product-Name": "con terra Developer Network",
+  "Components": [
+    {
+      "name": "EditingTypesFix",
+      "provides": [
+      ],
+      "properties": {
+      },
+      "references": [
+        {
+          "name": "_attributeEditingWidgetResolver",
+          "providing": "editing.AttributeEditingWidgetResolver"
+        }
+      ]
+    }
+  ]
+}
