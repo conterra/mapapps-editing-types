@@ -13,7 +13,7 @@
       "version": "^3.3.0"
     }
   ],
-  "Product-Name": "con terra Developer Network",
+  "Product-Name": "devnet-mapapps-editing-types",
   "Components": [
     {
       "name": "EditingTypesFix",
