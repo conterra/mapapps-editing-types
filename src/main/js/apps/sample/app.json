@@ -48,6 +48,13 @@
     "custominfo": {
       "CustomInfoToggleTool": [
         {
+          "id": "customInfoTool",
+          "activateOnStartup": true,
+          "title": "${custominfo.title}",
+          "tooltip": "${custominfo.title}",
+          "iconClass": "icon-custom-info-info",
+          "toolClass": "ctInfo",
+          "togglable": true,
           "widgetSettings": {
             "content": "${custominfo.content}",
             "window": {
@@ -57,22 +64,14 @@
                 "l": 25,
                 "b": 70
               },
+              "title": "${custominfo.title}",
               "draggable": true,
               "closable": true,
               "modal": false,
               "maximizable": false,
-              "resizable": true,
-              "title": "${custominfo.title}"
+              "resizable": false
             }
-          },
-          "type": "INFO",
-          "toolClass": "ctInfo",
-          "title": "${custominfo.title}",
-          "tooltip": "${custominfo.title}",
-          "iconClass": "icon-custom-info-info",
-          "togglable": true,
-          "id": "customInfoTool",
-          "activateOnStartup": true
+          }
         }
       ],
       "enabled": true
