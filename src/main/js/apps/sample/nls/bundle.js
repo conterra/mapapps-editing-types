@@ -22,7 +22,7 @@ define({
         },
         custominfo: {
             title: "Information",
-            content: "This bundle allows you to edit feature types in the editing bundle."
+            content: "This bundle allows you to edit feature types together with the map.apps core editing bundle. Normally, editing attributes that are used as type ID fields in ArcGIS Server are not available for editing, because attribute domains or other parameters might change with different types and this would not be reflected correctly in map.apps. This bundle is intended to be used, if types are only used for visualization of features. Use it with caution when using subtypes in your data."
         }
     },
     de: true

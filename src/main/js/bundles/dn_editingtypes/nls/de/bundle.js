@@ -15,5 +15,5 @@
  */
 define({
     bundleName: "Editing Types",
-    bundleDescription: "Dieses Bundle erlaubt es die Feature Types im Editing Bundle zu editieren."
+    bundleDescription: "Dieses Bundle erlaubt es Ihnen Feature Types im map.apps Core Bundle Editing zu editieren."
 });

@@ -16,7 +16,7 @@
 define({
     root: {
         bundleName: "Editing Types",
-        bundleDescription: "This bundle allows you to edit feature types in the editing bundle."
+        bundleDescription: "This bundle allows you to edit feature types together with the map.apps core editing bundle."
     },
     de: true
 });
