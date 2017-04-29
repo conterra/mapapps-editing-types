@@ -73,8 +73,7 @@
             }
           }
         }
-      ],
-      "enabled": true
+      ]
     },
     "contentviewer": {
       "ContentRegistration": {
