@@ -153,6 +153,21 @@
                   "layers": [
                     "1"
                   ]
+                },
+                {
+                  "id": "saveTheBaySync",
+                  "service": "saveTheBaySync_feature",
+                  "enabled": true,
+                  "options": {
+                    "outFields": [
+                      "*"
+                    ],
+                    "mode": 1,
+                    "editable": true
+                  },
+                  "layers": [
+                    "*"
+                  ]
                 }
               ],
               "baseLayer": [
@@ -190,6 +205,28 @@
                   "id": 1
                 }
               ]
+            },
+            {
+              "id": "saveTheBaySync_feature",
+              "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/SaveTheBaySync/FeatureServer",
+              "type": "AGS_FEATURE",
+              "title": "SaveTheBay",
+              "description": "This map illustrates a collection schema for wildlife sightings. \n\nThis is a sample service hosted by ESRI, powered by ArcGIS Server. ESRI reserves the right to change or remove this service at any time and without notice.",
+              "layers": [
+                {
+                  "id": "0",
+                  "title": "Marine"
+                },
+                {
+                  "id": "1",
+                  "title": "Birds"
+                },
+                {
+                  "id": "2",
+                  "title": "Area"
+                }
+              ],
+              "options": {}
             },
             {
               "id": "grey",
