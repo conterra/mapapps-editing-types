@@ -3,7 +3,7 @@ This bundle allows you to edit feature types together with the map.apps core edi
 
 Sample App
 ------------------
-https://www.mapapps.de/mapapps/resources/apps/downloads_editing_types 
+https://demos.conterra.de/mapapps/resources/apps/downloads_editing_types
 
 Installation Guide
 ------------------
