@@ -1,5 +1,6 @@
 testConfig({
-    jsregistry: [{
+    jsregistry: [
+        {
             //root: "url to registry..",
             packages: [
                 // register all self hosted packages
