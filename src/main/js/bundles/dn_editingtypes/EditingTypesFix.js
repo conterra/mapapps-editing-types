@@ -43,7 +43,7 @@ define([
             };
             var fields = Domains(metadata).mergeDomainsIntoFields(attributes);
             var typeIdField = ct_array.arraySearchFirst(fields, {
-                alias: esriLayer.typeIdField
+                name: esriLayer.typeIdField
             });
             if (typeIdField)
                 typeIdField.editable = true;
