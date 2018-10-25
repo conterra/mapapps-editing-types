@@ -151,21 +151,6 @@
                     "editable": true
                   },
                   "layers": [
-                    "1"
-                  ]
-                },
-                {
-                  "id": "saveTheBaySync",
-                  "service": "saveTheBaySync_feature",
-                  "enabled": true,
-                  "options": {
-                    "outFields": [
-                      "*"
-                    ],
-                    "mode": 1,
-                    "editable": true
-                  },
-                  "layers": [
                     "*"
                   ]
                 }
@@ -201,32 +186,14 @@
               "url": "https://services.conterra.de/arcgis/rest/services/mapapps/stoerung_admin/FeatureServer",
               "layers": [
                 {
+                  "title": "Stoerungen",
+                  "id": 0
+                },
+                {
                   "title": "Status",
                   "id": 1
                 }
               ]
-            },
-            {
-              "id": "saveTheBaySync_feature",
-              "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Sync/SaveTheBaySync/FeatureServer",
-              "type": "AGS_FEATURE",
-              "title": "SaveTheBay",
-              "description": "This map illustrates a collection schema for wildlife sightings. \n\nThis is a sample service hosted by ESRI, powered by ArcGIS Server. ESRI reserves the right to change or remove this service at any time and without notice.",
-              "layers": [
-                {
-                  "id": "0",
-                  "title": "Marine"
-                },
-                {
-                  "id": "1",
-                  "title": "Birds"
-                },
-                {
-                  "id": "2",
-                  "title": "Area"
-                }
-              ],
-              "options": {}
             },
             {
               "id": "grey",
@@ -374,55 +341,6 @@
       ],
       "SnappingModel": {
         "snappingEnabled": false
-      },
-      "DataformControlResolver": {
-        "dataformControlDefinitions": {
-          "mapapps_feature": {
-            "art": [],
-            "objectid": [],
-            "kommentar": [
-              {
-                "type": "textarea",
-                "title": "Kommentar",
-                "size": {
-                  "w": 200,
-                  "h": 90
-                }
-              }
-            ],
-            "details": [
-              {
-                "type": "textarea",
-                "title": "Details",
-                "size": {
-                  "w": 200,
-                  "h": 60
-                }
-              }
-            ],
-            "melder": [
-              {
-                "type": "textbox",
-                "title": "Erfasser"
-              }
-            ],
-            "zeitpunkt": [
-              {
-                "type": "datetextbox",
-                "title": "Datum",
-                "bindingFormat": "unix"
-              },
-              {
-                "type": "timetextbox",
-                "title": "Uhrzeit",
-                "bindingFormat": "unix",
-                "inc": "T00:30:00"
-              }
-            ]
-          }
-        },
-        "customTypeMappings": {},
-        "showLabelsInsteadOfReadOnlyControls": true
       }
     }
   }
