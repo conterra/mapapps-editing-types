@@ -25,6 +25,14 @@
         {
           "name": "_attributeEditingWidgetResolver",
           "providing": "editing.AttributeEditingWidgetResolver"
+        },
+        {
+          "name": "_featureEditingController",
+          "providing": "editing.FeatureEditingController"
+        },
+        {
+          "name": "_esriMap",
+          "providing": "esri.Map"
         }
       ]
     }

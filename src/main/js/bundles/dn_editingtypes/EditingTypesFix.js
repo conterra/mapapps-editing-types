@@ -15,19 +15,56 @@
  */
 define([
     "dojo/_base/declare",
-    "dojo/aspect",
+    "dojo/_base/array",
+    "dojo/_base/lang",
     "ct/array",
+    "ct/_when",
     "ct/store/Domains"
 ], function (declare,
-             d_aspect,
+             d_array,
+             d_lang,
              ct_array,
+             ct_when,
              Domains) {
     return declare([], {
-        constructor: function () {
-        },
         activate: function () {
             this.inherited(arguments);
             this._attributeEditingWidgetResolver._resolveDataformJson = this._resolveDataformJson;
+            this._featureEditingController._onAttributeEditorApply = this._onAttributeEditorApply;
+            this._featureEditingController._esriMap = this._esriMap;
+        },
+        _onAttributeEditorApply: function (evt) {
+            var currentEditOptions = this._currentEditOptions;
+            if (!currentEditOptions) {
+                return;
+            }
+            var context = {
+                graphic: evt.graphic,
+                editInfo: evt.editInfo
+            };
+            if (currentEditOptions.isCreate) {
+                context.isCreate = true;
+            } else {
+                context.isUpdate = true;
+            }
+            context.unmodifiedGraphic = this._orgGraphic;
+            return ct_when(this._process(context), function (r) {
+                var layerIds = this.esriMap.graphicsLayerIds;
+                if (layerIds && layerIds.length) {
+                    d_array.forEach(layerIds, d_lang.hitch(this, function (layerId) {
+                        var layer = this.esriMap.getLayer(layerId);
+                        if (layer && layer.refresh) {
+                            layer.refresh();
+                        }
+                    }));
+                }
+                if (currentEditOptions.isCreateTool) {
+                    this._reactivateDrawFeatureAfterAttributeEditing(true);
+                }
+                this._orgGraphic = this._cloneGraphic(context.graphic);
+            }, function (e) {
+                return;
+            }, this);
         },
         _resolveDataformJson: function (opts) {
             var graphic = opts.graphic;
